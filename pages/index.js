@@ -3,16 +3,25 @@ import { useRouter } from "next/router";
 
 export default function HomePage() {
   const router = useRouter();
-  const { locale } = router;
+  const { locale, pathname, asPath } = router;
 
   const dataToDisplay = appInformation.find(
     (appInfo) => appInfo.locale === locale
   );
 
-  console.log(router);
   return (
     <div>
       <h1>Hello from Next.js</h1>
+      <select
+        onChange={(event) =>
+          router.push({ pathname }, asPath, {
+            locale: event.target.value,
+          })
+        }
+      >
+        <option value="en-US">English</option>
+        <option value="de-DE">German</option>
+      </select>
       {dataToDisplay && (
         <>
           <h2>{dataToDisplay.title}</h2>
