@@ -18,6 +18,7 @@ export default function HomePage() {
             locale: event.target.value,
           })
         }
+        defaultValue={locale}
       >
         <option value="en-US">English</option>
         <option value="de-DE">German</option>
